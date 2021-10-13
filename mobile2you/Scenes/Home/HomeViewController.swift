@@ -22,6 +22,7 @@ class HomeViewController: UIViewController {
     // MARK: Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCell()
         
     }
     
@@ -30,5 +31,23 @@ class HomeViewController: UIViewController {
     }
     
     // MARK: Methods
+    func setupCell() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+    }
+}
+
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let tv = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        return tv
+    }
+    
     
 }
