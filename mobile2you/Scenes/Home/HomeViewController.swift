@@ -8,22 +8,27 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    
+    // MARK: Properties
+    let movieID = ""
+    // MARK: Outlets
+    @IBOutlet weak var imageViewPoster: UIImageView!
+    @IBOutlet weak var labelPoster: UILabel!
+    @IBOutlet weak var buttonStyle: UIButton!
+    @IBOutlet weak var labelLikes: UILabel!
+    @IBOutlet weak var labelPopular: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    // MARK: Actions
+    @IBAction func buttonAction(_ sender: Any) {
     }
-    */
-
+    
+    // MARK: Methods
+    
 }
