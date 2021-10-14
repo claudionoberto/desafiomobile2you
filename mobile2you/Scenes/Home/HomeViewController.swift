@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import Kingfisher
 
 class HomeViewController: UIViewController {
     
     // MARK: Properties
-    let movieID = ""
+    var HomeViewModel: HomeModel = HomeModel()
     // MARK: Outlets
     @IBOutlet weak var imageViewPoster: UIImageView!
     @IBOutlet weak var labelPoster: UILabel!
@@ -22,12 +23,21 @@ class HomeViewController: UIViewController {
     // MARK: Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
+        HomeViewModel.apiPoster()
+        bind()
         setupCell()
         
     }
     
     // MARK: Actions
-    @IBAction func buttonAction(_ sender: Any) {
+    @IBAction func buttonAction(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        
+        if sender.isSelected {
+            buttonStyle.setImage(UIImage(systemName: "heart.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 0, weight: .bold, scale: .large)), for: [])
+        } else {
+            buttonStyle.setImage(UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration(pointSize: 0, weight: .bold, scale: .large)), for: [])
+        }
     }
     
     // MARK: Methods
@@ -35,6 +45,26 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+    }
+    
+    func setupPosterMovie() {
+        let popularityOpcional = HomeViewModel.getPopular()
+        let likesOpcional = HomeViewModel.getLikes()
+        let imageOpcional = HomeViewModel.getImage()
+        guard let popularity = popularityOpcional, let likes = likesOpcional, let image = imageOpcional else { return }
+        labelPopular.text = String(popularity)
+        labelLikes.text = String(likes)
+        let ur = URL(string: "https://image.tmdb.org/t/p/w500/\(image)")!
+        imageViewPoster.kf.setImage(with: ur)
+        
+    }
+    
+    func bind() {
+        HomeViewModel.update = { [weak self] in
+            DispatchQueue.main.async {
+                self?.setupPosterMovie()
+            }
+        }
     }
 }
 
