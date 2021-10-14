@@ -51,11 +51,13 @@ class HomeViewController: UIViewController {
         let popularityOpcional = HomeViewModel.getPopular()
         let likesOpcional = HomeViewModel.getLikes()
         let imageOpcional = HomeViewModel.getImage()
+        let titleOpcional = HomeViewModel.getTitle()
         guard let popularity = popularityOpcional, let likes = likesOpcional, let image = imageOpcional else { return }
         labelPopular.text = String(popularity)
         labelLikes.text = String(likes)
-        let ur = URL(string: "https://image.tmdb.org/t/p/w500/\(image)")!
-        imageViewPoster.kf.setImage(with: ur)
+        labelPoster.text = titleOpcional
+        let url = URL(string: "https://image.tmdb.org/t/p/w500/\(image)")!
+        imageViewPoster.kf.setImage(with: url)
         
     }
     
