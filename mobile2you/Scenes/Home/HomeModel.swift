@@ -10,7 +10,7 @@ import Alamofire
 
 class HomeModel {
     private var MoviePoster: MovieModel?
-    var update: (() -> Void)?
+    var updatePoster: (() -> Void)?
     
     func getPopular() -> Double? {
         return MoviePoster?.popularity
@@ -35,7 +35,7 @@ class HomeModel {
             do{
                 let movie = try? JSONDecoder().decode(MovieModel.self, from: data)
                 self.MoviePoster = movie
-                self.update?()
+                self.updatePoster?()
             }
         }
     }

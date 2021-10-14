@@ -12,6 +12,7 @@
 		390CB4932718B82300F669B8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 390CB4922718B82300F669B8 /* Kingfisher */; };
 		3941F2B8271762C000EC033C /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3941F2B6271762C000EC033C /* TableViewCell.swift */; };
 		3941F2B9271762C000EC033C /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3941F2B7271762C000EC033C /* TableViewCell.xib */; };
+		3975FD362718D74D00549657 /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3975FD352718D74D00549657 /* CellModel.swift */; };
 		3995A682271784CD008EACBB /* MoviesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3995A681271784CD008EACBB /* MoviesModel.swift */; };
 		39A653C32714BD9500BC1F44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A653C22714BD9500BC1F44 /* AppDelegate.swift */; };
 		39A653CC2714BD9500BC1F44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39A653CB2714BD9500BC1F44 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		390CB48C2718B7C300F669B8 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		3941F2B6271762C000EC033C /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		3941F2B7271762C000EC033C /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		3975FD352718D74D00549657 /* CellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModel.swift; sourceTree = "<group>"; };
 		3995A681271784CD008EACBB /* MoviesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesModel.swift; sourceTree = "<group>"; };
 		39A653BF2714BD9500BC1F44 /* mobile2you.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mobile2you.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39A653C22714BD9500BC1F44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 			children = (
 				3941F2B6271762C000EC033C /* TableViewCell.swift */,
 				3941F2B7271762C000EC033C /* TableViewCell.xib */,
+				3975FD352718D74D00549657 /* CellModel.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				39A653C32714BD9500BC1F44 /* AppDelegate.swift in Sources */,
 				390CB48D2718B7C300F669B8 /* HomeModel.swift in Sources */,
 				39A653DC2714BE9400BC1F44 /* HomeViewController.swift in Sources */,
+				3975FD362718D74D00549657 /* CellModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

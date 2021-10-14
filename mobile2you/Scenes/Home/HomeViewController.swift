@@ -12,6 +12,7 @@ class HomeViewController: UIViewController {
     
     // MARK: Properties
     var HomeViewModel: HomeModel = HomeModel()
+    var CellViewModel: CellModel = CellModel()
     // MARK: Outlets
     @IBOutlet weak var imageViewPoster: UIImageView!
     @IBOutlet weak var labelPoster: UILabel!
@@ -24,7 +25,9 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         HomeViewModel.apiPoster()
-        bind()
+        bindPoster()
+        CellViewModel.apiSimilarMovies()
+        bindSimilarMovies()
         setupCell()
         
     }
@@ -54,17 +57,25 @@ class HomeViewController: UIViewController {
         let titleOpcional = HomeViewModel.getTitle()
         guard let popularity = popularityOpcional, let likes = likesOpcional, let image = imageOpcional else { return }
         labelPopular.text = String(popularity)
-        labelLikes.text = String(likes)
+        labelLikes.text = String(likes) + " Likes"
         labelPoster.text = titleOpcional
         let url = URL(string: "https://image.tmdb.org/t/p/w500/\(image)")!
         imageViewPoster.kf.setImage(with: url)
         
     }
     
-    func bind() {
-        HomeViewModel.update = { [weak self] in
+    func bindPoster() {
+        HomeViewModel.updatePoster = { [weak self] in
             DispatchQueue.main.async {
                 self?.setupPosterMovie()
+            }
+        }
+    }
+    
+    func bindSimilarMovies() {
+        CellViewModel.updateCell = { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
             }
         }
     }
@@ -73,12 +84,17 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return CellViewModel.getMovieCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tv = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        return tv
+        if let tv = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? TableViewCell {
+            let index = CellViewModel.movieIndex(indexPath.row)
+            tv.setupMovies(index)
+            return tv
+        }
+        
+        return UITableViewCell(frame: .zero)
     }
     
     
