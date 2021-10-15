@@ -61,6 +61,7 @@ class HomeViewController: UIViewController {
         labelPoster.text = titleOpcional
         let url = URL(string: "https://image.tmdb.org/t/p/w500/\(image)")!
         imageViewPoster.kf.setImage(with: url)
+        gradientImage()
         
     }
     
@@ -78,6 +79,21 @@ class HomeViewController: UIViewController {
                 self?.tableView.reloadData()
             }
         }
+    }
+    
+    func gradientImage() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = imageViewPoster.frame
+        let colors = [
+            UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor,
+            UIColor(red: 0, green: 0, blue: 0, alpha: 0).cgColor
+        ]
+
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 1)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.5)
+        gradientLayer.colors = colors
+
+        imageViewPoster.layer.addSublayer(gradientLayer)
     }
 }
 

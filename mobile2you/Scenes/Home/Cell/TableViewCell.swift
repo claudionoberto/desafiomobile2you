@@ -9,11 +9,12 @@ import UIKit
 import Kingfisher
 
 class TableViewCell: UITableViewCell {
+    // MARK: Outlets
     @IBOutlet weak var imageViewMovieCell: UIImageView!
     @IBOutlet weak var labelTitleMovieCell: UILabel!
     @IBOutlet weak var labelGenre: UILabel!
     @IBOutlet weak var labelRelease: UILabel!
-    
+    // MARK: Overrides
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,7 +25,7 @@ class TableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+    // MARK: Methods
     func setupMovies(_ movie: SimilarMovies?) {
         guard let urlImage = movie?.poster_path, let movieGenre = movie?.genre_ids else { return }
         let url = URL(string: "https://image.tmdb.org/t/p/w500/\(urlImage)")
