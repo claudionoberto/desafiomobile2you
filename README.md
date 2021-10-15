@@ -14,4 +14,4 @@ Preview do APP:
 
 
 
-![Simulator Screen Recording - iPhone 11 - 2021-10-14 at 23 01 38](https://user-images.githubusercontent.com/83810561/137425642-c5b8fe03-177e-496a-b190-ec320e5cf089.gif)
+![Simulator Screen Recording - iPhone 11 - 2021-10-15 at 11 34 45](https://user-images.githubusercontent.com/83810561/137514931-2ce254ab-4476-4c25-bfcd-1275dacf387d.gif)
