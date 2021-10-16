@@ -56,7 +56,7 @@ class HomeViewController: UIViewController {
         let imageOpcional = HomeViewModel.getImage()
         let titleOpcional = HomeViewModel.getTitle()
         guard let popularity = popularityOpcional, let likes = likesOpcional, let image = imageOpcional else { return }
-        labelPopular.text = String(popularity)
+        labelPopular.text = String(popularity) + " Views"
         labelLikes.text = String(likes) + " Likes"
         labelPoster.text = titleOpcional
         let url = URL(string: "https://image.tmdb.org/t/p/w500/\(image)")!
